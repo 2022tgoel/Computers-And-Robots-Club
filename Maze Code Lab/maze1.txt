@@ -1,0 +1,11 @@
+4 5
+*****
+E * *
+*   S
+*****
+
+
+*MAZE FORMAT*
+H W
+H lines with W characters
+(H is height, W is width)
