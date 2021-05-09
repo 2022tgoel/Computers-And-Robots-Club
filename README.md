@@ -18,5 +18,4 @@
 * **turnLeft()**: makes the robot turn left
 * **turnRight()**: makes the robot turn right
 * **isDone()**: checks if the robot is done navigating the maze
-* **willReachEnd()**: checks if a single step forward will make the robot reach the end
 * **printMaze()**: prints the current state of the maze with the location and direction of the robot
