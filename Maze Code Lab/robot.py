@@ -47,7 +47,7 @@ class Robot():
 	def turnRight(self):
 		self.o = (self.o+1)%4
 	def willReachEnd(self):
-        if (self.o == 0 and self.loc%self.w==0):
+		if (self.o == 0 and self.loc%self.w==0):
 			return False
 		if (self.o == 1 and self.loc//self.w==0):
 			return False
@@ -55,7 +55,7 @@ class Robot():
 			return False
 		if (self.o == 3 and self.loc//self.w==self.h-1):
 			return False
-        return self.loc + self.d[self.o] == self.end
+		return self.loc + self.d[self.o] == self.end
 	def isDone(self):
 		return self.loc == self.end
 	def printMaze(self):
