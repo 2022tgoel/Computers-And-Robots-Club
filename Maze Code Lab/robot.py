@@ -1,5 +1,3 @@
-MAZE_FILE = "maze1.txt"
-
 S = "S"
 E = "E"
 B = "*"
@@ -7,8 +5,8 @@ B = "*"
 CHARS = ['<', '^', '>', 'v']
 
 class Robot():
-	def read_input(self):
-		f = open(MAZE_FILE, "r")
+	def read_input(self, maze_file):
+		f = open(maze_file, "r")
 		self.h, self.w = [int(x) for x in f.readline().split(" ")]
 		self.d = [-1, -1*self.w, 1, self.w]
 		maze = ""
@@ -22,8 +20,8 @@ class Robot():
 		self.maze = maze
 		self.o = 0 #ROBOT ALWAYS STARTS POINTING TO THE LEFT
 
-	def __init__(self):
-		self.read_input()
+	def __init__(self, maze_file):
+		self.read_input(maze_file)
 
 	## what would be used in the coding lab
 	def canMoveForward(self):
@@ -46,16 +44,6 @@ class Robot():
 		self.o = (self.o+3)%4
 	def turnRight(self):
 		self.o = (self.o+1)%4
-	def willReachEnd(self):
-		if (self.o == 0 and self.loc%self.w==0):
-			return False
-		if (self.o == 1 and self.loc//self.w==0):
-			return False
-		if (self.o == 2 and self.loc%self.w==self.w-1):
-			return False
-		if (self.o == 3 and self.loc//self.w==self.h-1):
-			return False
-		return self.loc + self.d[self.o] == self.end
 	def isDone(self):
 		return self.loc == self.end
 	def printMaze(self):

@@ -1,6 +1,6 @@
 from robot import Robot
 
-robot = Robot()
+robot = Robot("maze2.txt")
 
 robot.printMaze()
 
@@ -24,10 +24,9 @@ def turnAround():
 
 def navigateMaze():
     while not robot.isDone():
-        if robot.willReachEnd():
-            robot.moveForward()
-        elif isLeftOpen():
+        if isLeftOpen():
             robot.turnLeft()
+            robot.moveForward()
         elif isFrontOpen():
             robot.moveForward()
         elif isRightOpen():
