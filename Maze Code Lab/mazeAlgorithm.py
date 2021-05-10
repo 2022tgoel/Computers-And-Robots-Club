@@ -1,6 +1,6 @@
 from robot import Robot
 
-robot = Robot("maze2.txt")
+robot = Robot("maze3.txt")
 
 robot.printMaze()
 
@@ -33,8 +33,9 @@ def navigateMaze():
             robot.turnRight()
         else:
             turnAround()
+        v = input("press enter to move to the next step")
         robot.printMaze()
-        v = raw_input("press enter to move to the next step")
 
 navigateMaze()
+print("Congratulations! You have solved the maze!")
 
