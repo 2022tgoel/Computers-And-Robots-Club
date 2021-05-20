@@ -1,0 +1,113 @@
+<html>
+<head>
+	<h1> Parity Game! </h1>
+	<style type="text/css">
+		.grid-container {
+		  display: grid;
+		  grid-template-columns: 100px 100px 100px 100px 100px 100px;
+		 /* padding: 10px;*/
+		 grid-gap: 5px 5px;
+		}
+		.grid-item {
+		  width: 100px;
+		  height: 100px;
+		}
+		.button {
+			background-color: gray;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div id="grid" class="grid-container">
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	  <div class="grid-item"></div>
+	</div>
+	<br>
+	<div class="end">
+		<div class="button">Let's make this harder!</div>
+		<br>
+		<a href='/2022tgoel'>Reset the game</a>
+	</div>
+	<script type="text/javascript">
+		var size = 5; // what the orignal size of the grid is.size^2 must be equal to the number of grid items
+		set_board();
+		make_clickable();
+		var harderButton = document.querySelector('.button');
+		harderButton.addEventListener("click", make_harder);
+		
+		function set_board(){
+			var nl_button_list = document.querySelectorAll('.grid-item');
+			var ar_button_list = Array.from(nl_button_list);
+			for (var i = 0; i < size*size; i++){
+				var curElem = ar_button_list[i];
+				var col = (i%size)+1;
+				var row = Math.floor(i/size) + 1;
+				console.log(row, col);
+				curElem.style['grid-column-start'] = col;
+				curElem.style['grid-column-end'] = col+1;
+				curElem.style['grid-row-start'] = row;
+				curElem.style['grid-row-end'] = row+1;
+				curElem.style['background-color'] = "green";
+			}
+		}
+		function make_clickable(){
+		    var nl_button_list = document.querySelectorAll('.grid-item');
+			var ar_button_list = Array.from(nl_button_list);
+			ar_button_list.forEach( function(elem){
+				if (elem.style['background-color']!="red" && elem.style['background-color']!="green" ){
+					elem.style['background-color']="green";
+				}
+    			elem.addEventListener("click", toggle_color);
+    		})
+		}
+		function toggle_color() {
+
+			if (this.style['background-color'] == "green"){
+				this.style['background-color'] = "red";
+			}
+			else {
+				this.style['background-color'] = "green";
+			}
+			
+		}
+		function make_harder(){
+			var grid_elem = document.getElementById("grid");
+			for (var i = 0; i < 2*size+1; i++){
+				grid_elem.innerHTML += "<div class='grid-item'></div>"
+			}
+			size+=1;
+			make_clickable();
+		}
+	</script>
+</body>
+</html>
